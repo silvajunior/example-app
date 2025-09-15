@@ -11,3 +11,9 @@ Instale dependências
 composer install
 npm install
 ```
+
+
+Rodar o projeto
+```bash
+composer run dev
+```

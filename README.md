@@ -29,8 +29,11 @@ MAIL_FROM_ADDRESS="no-reply@mailtrap.io"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
 Obs: Em produção pode ser usado um outro smtp, como o do google, com a porta 587 e as demais credenciais.
-
-Rodar o projeto
+Teste
+```bash
+php artisan test --filter=ApplicationControllerTest
+```
+Rode o projeto
 ```bash
 composer run dev
 ```

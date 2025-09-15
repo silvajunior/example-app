@@ -17,6 +17,7 @@ cp .env.example .env
 ```
 Para teste de envio de e-mail foi usado o Mailtrap.
 Vá em .env e altere para seu usuário e senha do Mailtrap.
+Obs: Em produção pode ser usado um outro smtp, como o do google, com a porta 587 e as demais credenciais.
 ```bash
 MAIL_MAILER=smtp
 #MAIL_SCHEME=null
@@ -28,8 +29,8 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="no-reply@mailtrap.io"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-Obs: Em produção pode ser usado um outro smtp, como o do google, com a porta 587 e as demais credenciais.
-Teste
+
+Rode o teste
 ```bash
 php artisan test --filter=ApplicationControllerTest
 ```

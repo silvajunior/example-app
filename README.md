@@ -1,6 +1,6 @@
 # example-app
 App examplo usando Laravel + Vue 
-
+![](https://raw.githubusercontent.com/silvajunior/example-app/refs/heads/main/example-app_laravel_vue.png)
 Clone project and Go to app.
 ```bash
 git clone https://github.com/silvajunior/example-app.git
@@ -11,15 +11,11 @@ Instale dependências
 composer install
 npm install
 ```
-Rodar o projeto
-```bash
-composer run dev
-```
 Copie o .env.example para .env
 ```bash
 cp .env.example .env
 ```
-Para teste de envio de e-mail esta sendo usado o Mailtrap.
+Para teste de envio de e-mail foi usado o Mailtrap.
 Vá em .env e altere para seu usuário e senha.
 ```bash
 MAIL_MAILER=smtp
@@ -32,4 +28,9 @@ MAIL_ENCRYPTION=tls
 MAIL_FROM_ADDRESS="no-reply@mailtrap.io"
 MAIL_FROM_NAME="${APP_NAME}"
 ```
-Em produção pode ser usado um outro smtp, como o do google, com a porta 587 e as demais credenciais.
+Obs: Em produção pode ser usado um outro smtp, como o do google, com a porta 587 e as demais credenciais.
+
+Rodar o projeto
+```bash
+composer run dev
+```

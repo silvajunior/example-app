@@ -1,5 +1,12 @@
 <template>
-  <div class="container mt-5">
+  <div class="container mt-5 position-relative">
+    <!-- Loading Overlay -->
+    <div v-if="isSubmitting" class="loading-overlay">
+      <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Carregando...</span>
+      </div>
+    </div>
+
     <h2>Envio de Currículo</h2>
     <form @submit.prevent="submitForm" enctype="multipart/form-data" novalidate>
       <div class="mb-3">
@@ -50,7 +57,11 @@
         <div v-if="errors.file" class="text-danger">{{ errors.file }}</div>
       </div>
 
-      <button type="submit" class="btn btn-primary">Enviar</button>
+      <button type="submit" class="btn btn-primary" :disabled="isSubmitting">
+        <span v-if="isSubmitting" class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+        <span v-if="!isSubmitting">Enviar</span>
+        <span v-else>Enviando...</span>
+      </button>
 
       <div v-if="successMessage" class="alert alert-success mt-3">
         {{ successMessage }}
@@ -79,7 +90,8 @@ export default {
       },
       errors: {},
       successMessage: '',
-      submitError: ''
+      submitError: '',
+      isSubmitting: false
     }
   },
   methods: {
@@ -109,7 +121,11 @@ export default {
       if (!this.form.file) {
         this.errors.file = 'Arquivo de currículo é obrigatório.'
       } else {
-        const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document']
+        const allowedTypes = [
+          'application/pdf',
+          'application/msword',
+          'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+        ]
         const maxSize = 1024 * 1024 // 1MB
 
         if (!allowedTypes.includes(this.form.file.type)) {
@@ -124,8 +140,10 @@ export default {
     async submitForm() {
       this.successMessage = ''
       this.submitError = ''
+      this.isSubmitting = true
 
       if (!this.validateForm()) {
+        this.isSubmitting = false
         return
       }
 
@@ -151,6 +169,8 @@ export default {
       } catch (error) {
         console.error(error)
         this.submitError = 'Erro ao enviar o formulário. Tente novamente mais tarde.'
+      } finally {
+        this.isSubmitting = false
       }
     }
   }
@@ -164,6 +184,7 @@ export default {
   color: #000000;
   padding: 2rem;
   border-radius: 8px;
+  position: relative;
 }
 .form-control, .form-select, .btn {
   background-color: #f8efef;
@@ -176,5 +197,18 @@ export default {
 .text-danger {
   font-size: 0.9rem;
   margin-top: 0.25rem;
+}
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
 }
 </style>

@@ -54,7 +54,7 @@ class ApplicationController extends Controller
         }
         
         return response()->json([
-            'message' => 'Currículo enviado, salvo e e-mail enviado com sucesso!',
+            'message' => 'Currículo enviado com sucesso!',
             'data' => $application,
         ]);
 

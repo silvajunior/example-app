@@ -3,7 +3,7 @@ App examplo usando Laravel + Vue
 ![](https://raw.githubusercontent.com/silvajunior/example-app/refs/heads/main/example-app_laravel_vue.png)
 Clone project and Go to app.
 ```bash
-git clone https://github.com/silvajunior/example-app.git
+git clone git@github.com:silvajunior/example-app.git
 cd example-app
 ```
 Instale dependências

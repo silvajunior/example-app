@@ -16,7 +16,7 @@ Copie o .env.example para .env
 cp .env.example .env
 ```
 Para teste de envio de e-mail foi usado o Mailtrap.
-Vá em .env e altere para seu usuário e senha.
+Vá em .env e altere para seu usuário e senha do Mailtrap.
 ```bash
 MAIL_MAILER=smtp
 #MAIL_SCHEME=null
